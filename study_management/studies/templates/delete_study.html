@@ -1,0 +1,6 @@
+<h2>Are you sure you want to delete "{{ study.study_name }}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'study_list' %}">Cancel</a>
+</form>

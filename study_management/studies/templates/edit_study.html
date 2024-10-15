@@ -1,0 +1,11 @@
+<body style="background-color: rgba(135, 206, 250, 0.432);">
+<div style="margin: 100px 0 0 500px;">
+<h2 style="padding-left: 120px;">{% if form.instance.pk %}Edit Study{% else %}Add Study{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button style="padding: 1px 7px 1px 7px;background-color: green;color: white;" type="submit">Save</button>
+    <button style="background-color: orangered;"><a style="text-decoration: none;color: white;" href="{% url 'study_list' %}">Cancel</a></button>
+</form>
+</div>
+</body>

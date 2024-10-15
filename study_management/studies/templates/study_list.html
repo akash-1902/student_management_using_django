@@ -1,0 +1,31 @@
+<body style="background-color:rgba(135, 206, 250, 0.432);">
+<center style="margin-top: 100px;">
+<h2>Study Management</h2>
+<table border="1">
+    <tr>
+        <th style="padding: 5px 10px 5px 10px;">Study Name</th>
+        <th style="padding: 5px 10px 5px 10px;">Phase</th>
+        <th style="padding: 5px 10px 5px 10px;">Sponsor</th>
+        <th style="padding: 5px 10px 5px 10px;">Description</th>
+        <th style="padding: 5px 10px 5px 20px;">Actions</th>
+    </tr>
+    {% for study in studies %}
+    <tr>
+        <td>{{ study.study_name }}</td>
+        <td>{{ study.study_phase }}</td>
+        <td>{{ study.sponsor_name }}</td>
+        <td>{{ study.study_description }}</td>
+        <td style="display: grid;grid-template-columns: 1fr 1fr 1fr;gap: 4px;">
+            <button style="height: 20px;margin-top: 13px;background-color: green;"><a style="padding-top: 10px;text-decoration: none;color: white;" href="{% url 'view_study' study.pk %}">View</a></button>
+            <button style="height: 20px;margin-top: 13px;background-color: blueviolet;"><a style="padding-top: 10px;text-decoration: none;color: white;" href="{% url 'edit_study' study.pk %}">Edit</a></button>
+            <form action="{% url 'delete_study' study.pk %}" method="post">
+                {% csrf_token %}
+                <button style="margin-top: 13px;background-color: red;color: white;" type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<button style="margin-top: 20px;background-color: darkblue;padding: 5px;"><a style="text-decoration: none;color: white;" href="{% url 'add_study' %}">Add Study</a></button>
+</center>
+</body>
